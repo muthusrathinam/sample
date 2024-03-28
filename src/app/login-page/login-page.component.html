@@ -1,0 +1,57 @@
+<div class="container mb-4">
+    <input type="checkbox" id="flip">
+    <div class="cover">
+      <div class="front">
+        <img src="../../assets/images/Drink-Coffee-icon.png" alt="">
+        <div class="text">
+          <span class="text-1">Start Your Day with<br> Coffee</span>
+          <span class="text-1">and Good Meals</span>
+        </div>
+      </div>
+    </div>
+    <div class="forms">
+        <div class="form-content">
+          <div class="login-form">
+            <div class="title">Login</div>
+          <form [formGroup] = "loginForm" id="loginForm">
+            <div class="input-boxes">
+              <div class="input-box form-control" [class.is-invalid]="login['emailLogin'].errors && login['emailLogin'].touched">
+                <div class="inputField">
+                  <i class="fa fa-envelope"></i>
+                  <input type="text" formControlName="emailLogin" placeholder="Enter your email" required>
+                </div>
+                <div *ngIf="login['emailLogin'].errors && login['emailLogin'].touched" class="invalid-feedback d-flex">
+                  <div *ngIf="login['emailLogin']?.errors?.['maxlength']" class="text-start">
+                      <p class="error">Maximum Length is 320.</p>
+                  </div>
+                  <div *ngIf="login['emailLogin']?.errors?.['pattern']" class="text-start d-flex">
+                      <p *ngIf="login['emailLogin']?.errors?.['pattern']" class="error">Email should be valid</p>
+                  </div>
+                </div>
+              </div>
+              <div class="input-box form-control" [class.is-invalid]="login['passwordLogin'].errors && login['passwordLogin'].touched">
+                <div class="inputField">
+                  <i class="fa fa-lock"></i>
+                  <input type="text" formControlName="passwordLogin" placeholder="Enter your password" required>
+                </div>
+                <div *ngIf="login['passwordLogin'].errors && login['passwordLogin'].touched" class="invalid-feedback d-flex">
+                  <div *ngIf="login['passwordLogin']?.errors?.['maxlength']" class="text-start">
+                      <p class="error">Maximum Length is 20.</p>
+                  </div>
+                  <div *ngIf="login['passwordLogin']?.errors?.['minlength'] || login['passwordLogin']?.errors?.['pattern']" class="text-start d-flex">
+                      <p *ngIf="login['passwordLogin']?.errors?.['minlength']" class="error">Minimum Length is 5.</p>
+                      <!-- <p *ngIf="signup['passwordSignup']?.errors?.['pattern']" class="error">Password should be valid</p> -->
+                  </div>
+                </div>
+              </div>
+              <div class="text"><a>Forgot password?</a></div>
+              <div class="button input-box">
+                <input type="submit" [disabled]="loginForm.invalid"  (click)="loginCheck()" value="Sumbit">
+              </div>
+              <div class="text sign-up-text">Don't have an account? <label (click)="signupPage()">Sigup now</label></div>
+            </div>
+        </form>
+      </div>
+    </div>
+    </div>
+  </div>

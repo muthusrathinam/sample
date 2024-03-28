@@ -1,0 +1,108 @@
+<div class="container mb-4">
+  <input type="checkbox" id="flip">
+  <div class="cover">
+    <div class="front">
+      <img src="../../assets/images/Drink-Coffee-icon.png" alt="">
+      <div class="text">
+        <span class="text-1">Start Your Day with<br> Coffee</span>
+        <span class="text-1">and Good Meals</span>
+      </div>
+    </div>
+    <div class="back">
+      <img class="backImg" src="../../assets/images/Drink-Coffee-icon.png" alt="">
+      <div class="text">
+          <span class="text-1">Start Your Day with<br> Coffee</span>
+          <span class="text-1">and Good Meals</span>
+      </div>
+    </div>
+  </div>
+  <div class="forms">
+      <div class="form-content">
+    <div class="signup-form">
+      <div class="title">SignUp</div>
+    <form [formGroup] = "signupForm" >
+      <div class="input-boxes">
+        <div class="input-box form-control" [class.is-invalid]="signup['firstnameSignup'].errors && signup['firstnameSignup'].touched">
+          <div class="inputField">
+            <i class="fa fa-user"></i>
+            <input type="text" formControlName="firstnameSignup" placeholder="Enter your first name" required>
+          </div>
+          <div *ngIf="signup['firstnameSignup'].errors && signup['firstnameSignup'].touched" class="invalid-feedback d-flex">
+            <div *ngIf="signup['firstnameSignup']?.errors?.['maxlength']" class="text-start">
+                <p class="error">Maximum Length is 20.</p>
+            </div>
+            <div *ngIf="signup['firstnameSignup']?.errors?.['minlength'] || signup['firstnameSignup']?.errors?.['pattern']" class="text-start d-flex">
+                <p *ngIf="signup['firstnameSignup']?.errors?.['minlength'] && !signup['firstnameSignup']?.errors?.['pattern']" class="error">Minimum Length is 5.</p>
+                <p *ngIf="signup['firstnameSignup']?.errors?.['pattern']" class="error">Firstname should be valid</p>
+            </div>
+          </div>
+        </div>
+        <div class="input-box form-control" [class.is-invalid]="signup['lastnameSignup'].errors && signup['lastnameSignup'].touched">
+              <div class="inputField">
+                <i class="fa fa-user"></i>
+                <input type="text" formControlName="lastnameSignup" placeholder="Enter your last name" required>
+              </div>
+              <div *ngIf="signup['lastnameSignup'].errors && signup['lastnameSignup'].touched" class="invalid-feedback d-flex">
+                <div *ngIf="signup['lastnameSignup']?.errors?.['maxlength']" class="text-start">
+                    <p class="error">Maximum Length is 20.</p>
+                </div>
+                <div *ngIf="signup['lastnameSignup']?.errors?.['minlength'] || signup['lastnameSignup']?.errors?.['pattern']" class="text-start d-flex">
+                    <p *ngIf="signup['lastnameSignup']?.errors?.['minlength'] && !signup['lastnameSignup']?.errors?.['pattern']" class="error">Minimum Length is 5.</p>
+                    <p *ngIf="signup['lastnameSignup']?.errors?.['pattern']" class="error">Lastname should be valid</p>
+                </div>
+            </div>
+        </div>
+        <div class="input-box form-control" [class.is-invalid]="signup['emailSignup'].errors && signup['emailSignup'].touched">
+          <div class="inputField">
+            <i class="fa fa-envelope"></i>
+            <input type="text" formControlName="emailSignup" placeholder="Enter your email" required>
+          </div>
+          <div *ngIf="signup['emailSignup'].errors && signup['emailSignup'].touched" class="invalid-feedback d-flex">
+            <div *ngIf="signup['emailSignup']?.errors?.['maxlength']" class="text-start">
+                <p class="error">Maximum Length is 320.</p>
+            </div>
+            <div *ngIf="signup['emailSignup']?.errors?.['pattern']" class="text-start d-flex">
+                <p *ngIf="signup['emailSignup']?.errors?.['pattern']" class="error">Email should be valid</p>
+            </div>
+          </div>
+        </div>
+        <div class="input-box form-control" [class.is-invalid]="signup['mobileSignup'].errors && signup['emailSignup'].touched">
+          <div class="inputField">
+            <i class="fa fa-mobile"></i>
+            <input type="text" formControlName="mobileSignup" placeholder="Enter your mobile number" required>
+          </div>
+          <div *ngIf="signup['mobileSignup'].errors && signup['mobileSignup'].touched" class="invalid-feedback d-flex">
+            <div *ngIf="signup['mobileSignup']?.errors?.['maxlength']" class="text-start">
+                <p class="error">Maximum Length is 10.</p>
+            </div>
+            <div *ngIf="signup['mobileSignup']?.errors?.['minlength'] || signup['mobileSignup']?.errors?.['pattern']" class="text-start d-flex">
+              <p *ngIf="signup['mobileSignup']?.errors?.['minlength']" class="error">Minimum Length is 5.</p>
+              <p *ngIf="signup['mobileSignup']?.errors?.['pattern']" class="error">Mobile number should be valid</p>
+          </div>
+          </div>
+        </div>
+        <div class="input-box form-control" [class.is-invalid]="signup['passwordSignup'].errors && signup['passwordSignup'].touched">
+          <div class="inputField">
+            <i class="fa fa-lock"></i>
+            <input type="text" formControlName="passwordSignup" placeholder="Enter your password" required>
+          </div>
+          <div *ngIf="signup['passwordSignup'].errors && signup['passwordSignup'].touched" class="invalid-feedback d-flex">
+            <div *ngIf="signup['passwordSignup']?.errors?.['maxlength']" class="text-start">
+                <p class="error">Maximum Length is 20.</p>
+            </div>
+            <div *ngIf="signup['passwordSignup']?.errors?.['minlength'] || signup['passwordSignup']?.errors?.['pattern']" class="text-start d-flex">
+                <p *ngIf="signup['passwordSignup']?.errors?.['minlength']" class="error">Minimum Length is 5.</p>
+                <!-- <p *ngIf="signup['passwordSignup']?.errors?.['pattern']" class="error">Password should be valid</p> -->
+            </div>
+          </div>
+        </div>
+        <div class="button input-box">
+          <input type="submit" value="Sumbit" [disabled]="signupForm.invalid"  (click)="userData()">
+        </div>
+        <div class="text sign-up-text">Already have an account? <label (click)="loginPage()">Login now</label></div>
+      </div>
+  </form>
+</div>
+  </div>
+  </div>
+</div>
